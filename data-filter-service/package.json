@@ -1,5 +1,5 @@
 {
-  "name": "data-changer-service",
+  "name": "data-filter-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,6 @@
   "author": "Helio Frota",
   "license": "Apache-2.0",
   "dependencies": {
-    "fastify": "^4.12.0",
-    "kafkajs": "^2.2.3"
+    "pg": "^8.8.0"
   }
 }
