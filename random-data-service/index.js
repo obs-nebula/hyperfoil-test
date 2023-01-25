@@ -5,10 +5,24 @@ const app = express();
 const port = 8080;
 const chance = new Chance();
 
-app.get('/', (_, res) => {
-  // TODO: to call a post on fastify service to send
-  // the sentence.
-  res.send(chance.sentence());
+app.get('/', async (req, _) => {
+  const paragraph = chance.paragraph();
+
+  const customHeaders = {
+    'Content-Type': 'application/json',
+  }
+  
+  try {
+    await fetch('http://localhost:8081/', {
+      method: "POST",
+      headers: customHeaders,
+      body: JSON.stringify({ msg: paragraph }),
+    });
+  } catch (err) {
+    console.log(req);
+    console.error(err);
+  }
+
 });
 
 app.listen(port, () => {

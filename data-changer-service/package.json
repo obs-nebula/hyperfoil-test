@@ -1,0 +1,16 @@
+{
+  "name": "data-changer-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.12.0",
+    "kafkajs": "^2.2.3"
+  }
+}
