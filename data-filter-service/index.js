@@ -1,3 +1,10 @@
+const opentelemetry = require('@opentelemetry/api');
+const { BasicTracerProvider, ConsoleSpanExporter, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+
+const provider = new BasicTracerProvider();
+provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
+provider.register();
+
 const { Kafka } = require('kafkajs');
 const db = require('./db.js');
 
@@ -13,7 +20,9 @@ const kfk = new Kafka({
   brokers: ['kafka:9092']
 });
 
+const span = opentelemetry.trace.getTracer('default').startSpan('new consumer');
 const consumer = kfk.consumer({ groupId: 'test' });
+span.end();
 
 function filterMessage(msg) {
   const newMsg = msg.split(' ').filter(token => {
@@ -31,9 +40,13 @@ function pingDDS(msg) {
 }
 
 const run = async () => {
+  const span = opentelemetry.trace.getTracer('default').startSpan('consumer connect');
   await consumer.connect();
+  span.end();
+  const span2 = opentelemetry.trace.getTracer('default').startSpan('consumer subscribe');
   await consumer.subscribe({ topic: 'msgs', fromBeginning: true });
-
+  span2.end();
+  const span3 = opentelemetry.trace.getTracer('default').startSpan('consumer consuming');
   await consumer.run({
     eachMessage: async ({ message }) => {
       const newMessage = filterMessage(message.value.toString());
@@ -42,6 +55,7 @@ const run = async () => {
       pingDDS(message.value.toString());
     }
   });
+  span3.end();
 };
 
 run();

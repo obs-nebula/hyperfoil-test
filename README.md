@@ -1,14 +1,11 @@
 # hyperfoil-test
 
-
-WIP
-
 ```
-random-data-service : rds
-data-changer-service: dcs
-data-filter-service : dfs
-display-data-service: dds
-postgreesql         : pg
+random-data-service  : rds - express                : auto-instrumentation
+data-changer-service : dcs - fastify, kafkajs       : auto-instrumentation, manual-instrumentation
+data-filter-service  : dfs - kafkajs, socket.io, pg : auto-instrumentation, manual-instrumentation
+display-data-service : dds - hapi, socket.io, pg    : auto-instrumentation
+postgres             : pg
 ```
 
 ```mermaid

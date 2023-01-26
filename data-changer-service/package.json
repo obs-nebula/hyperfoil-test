@@ -1,14 +1,21 @@
 {
   "name": "data-changer-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "Changes the data",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "NODE_OPTIONS='--require ./tracing.js' node ."
   },
   "author": "Helio Frota",
   "license": "Apache-2.0",
   "dependencies": {
+    "@opentelemetry/api": "^1.4.0",
+    "@opentelemetry/instrumentation-fastify": "^0.31.0",
+    "@opentelemetry/instrumentation-http": "^0.35.0",
+    "@opentelemetry/resources": "^1.9.0",
+    "@opentelemetry/sdk-trace-base": "^1.9.0",
+    "@opentelemetry/sdk-trace-node": "^1.9.0",
+    "@opentelemetry/semantic-conventions": "^1.9.0",
     "fastify": "^4.12.0",
     "kafkajs": "^2.2.3"
   }

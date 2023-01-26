@@ -1,15 +1,24 @@
 {
   "name": "display-data-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "Displays the data",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "NODE_OPTIONS='--require ./tracing.js' node ."
   },
   "author": "Helio Frota",
   "license": "Apache-2.0",
   "dependencies": {
     "@hapi/hapi": "^21.2.0",
+    "@opentelemetry/api": "^1.4.0",
+    "@opentelemetry/instrumentation-hapi": "^0.31.0",
+    "@opentelemetry/instrumentation-http": "^0.35.0",
+    "@opentelemetry/instrumentation-pg": "^0.34.0",
+    "@opentelemetry/instrumentation-socket.io": "^0.33.0",
+    "@opentelemetry/resources": "^1.9.0",
+    "@opentelemetry/sdk-trace-base": "^1.9.0",
+    "@opentelemetry/sdk-trace-node": "^1.9.0",
+    "@opentelemetry/semantic-conventions": "^1.9.0",
     "pg": "^8.8.0",
     "socket.io": "^4.5.4"
   }
