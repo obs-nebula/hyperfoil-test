@@ -1,4 +1,5 @@
 const Hapi = require('@hapi/hapi');
+const db = require('./db.js');
 
 const init = async () => {
   const server = Hapi.server({
@@ -11,6 +12,7 @@ const init = async () => {
     socket.emit('news', { hello: 'hey' });
     socket.on('msg', (data) => {
       console.log(data);
+      db.getAllTheCoolMessages();
     });
   });
 

@@ -1,6 +1,7 @@
 # hyperfoil-test
 
-wip 
+
+WIP
 
 ```
 random-data-service : rds
@@ -21,11 +22,15 @@ graph TD;
   dds--Was fooled by dfs-->void;
 ```
 
+Open a terminal and run:
 
-Open a terminal and run
-```
+```console
 docker-compose up
 ```
 
-Open other terminal and `curl 0.0.0.0:8080`
+Open other terminal and run
+
+```console
+curl 0.0.0.0:8080
+```
 

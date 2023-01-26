@@ -1,4 +1,5 @@
 const { Kafka } = require('kafkajs');
+const db = require('./db.js');
 
 const io = require('socket.io-client');
 
@@ -21,8 +22,8 @@ function filterMessage(msg) {
   return newMsg;
 }
 
-function sendToDB() {
-  console.log('send to db');
+function sendToDB(msg) {
+  db.addMessage(msg);
 }
 
 function pingDDS(msg) {
