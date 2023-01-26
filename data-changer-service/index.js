@@ -3,19 +3,20 @@ const { Kafka } = require('kafkajs');
 
 const kafka = new Kafka({
   clientId: 'data-changer-service',
-  brokers: ['http://localhost:9092']
+  brokers: ['kafka:9092']
 });
 
 const producer = kafka.producer();
 
 function changeMessage(msg) {
-  // do foobar with the msg here.
-  return msg;
+  const newMsg = msg.split(' ').filter(token => {
+    return token.length < 8;
+  }).join(' ');
+  return newMsg;
 }
 
 fastify.post('/', async (request, reply) => {
-  console.log(request.body);
-  const newMessage = changeMessage(request.body);
+  const newMessage = changeMessage(request.body.msg);
   await producer.connect();
   try {
     await producer.send({
@@ -25,10 +26,14 @@ fastify.post('/', async (request, reply) => {
   } catch (err) {
     console.log(err);
   }
+  reply.send(newMessage);
+});
+
+fastify.get('/', (_, reply) => {
   reply.send('ok');
 });
 
-fastify.listen({ port: 8081 }, (err, _) => {
+fastify.listen({ host: '0.0.0.0', port: 8081 }, (err, _) => {
   if (err) {
     console.error(err);
     process.exit(1);

@@ -9,6 +9,8 @@
   "author": "Helio Frota",
   "license": "Apache-2.0",
   "dependencies": {
-    "pg": "^8.8.0"
+    "kafkajs": "^2.2.3",
+    "pg": "^8.8.0",
+    "socket.io": "^4.5.4"
   }
 }

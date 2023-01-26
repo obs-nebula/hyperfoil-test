@@ -5,21 +5,22 @@ const app = express();
 const port = 8080;
 const chance = new Chance();
 
-app.get('/', async (req, _) => {
+app.get('/', async (_, res) => {
   const paragraph = chance.paragraph();
+  console.log(paragraph);
 
   const customHeaders = {
     'Content-Type': 'application/json',
   }
   
   try {
-    await fetch('http://localhost:8081/', {
-      method: "POST",
+    await fetch('http://dcs:8081/', {
+      method: 'POST',
       headers: customHeaders,
       body: JSON.stringify({ msg: paragraph }),
     });
+    res.send(paragraph);
   } catch (err) {
-    console.log(req);
     console.error(err);
   }
 
