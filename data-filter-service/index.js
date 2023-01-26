@@ -1,5 +1,12 @@
 const { Kafka } = require('kafkajs');
 
+const io = require('socket.io-client');
+
+const socket = io('http://dds:8083');
+socket.on('news', (data) => {
+  console.log(data);
+});
+
 const kfk = new Kafka({
   clientId: 'data-filter-service',
   brokers: ['kafka:9092']
@@ -18,8 +25,8 @@ function sendToDB() {
   console.log('send to db');
 }
 
-function pingDDS() {
-  console.log('ping DDS');
+function pingDDS(msg) {
+  socket.emit('msg', {msg: msg});
 }
 
 const run = async () => {
@@ -29,8 +36,9 @@ const run = async () => {
   await consumer.run({
     eachMessage: async ({ message }) => {
       const newMessage = filterMessage(message.value.toString());
-      sendToDB();
-      pingDDS();
+      sendToDB(newMessage);
+      // Trolling DDS here.
+      pingDDS(message.value.toString());
     }
   });
 };
