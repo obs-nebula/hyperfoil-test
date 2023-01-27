@@ -28,13 +28,10 @@ Open a terminal and run:
 docker-compose up
 ```
 
-Open other terminal and run
-
-```console
-curl 0.0.0.0:8080
-```
 
 ## Benchmark with Hyperfoil
+
+Open other terminal and run:
 
 ```console
 ./get-hf.sh
