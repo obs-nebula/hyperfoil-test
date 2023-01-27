@@ -1,0 +1,21 @@
+name: otel-disabled
+http:
+  # random-data-service
+  - host: http://0.0.0.0:8080
+    sharedConnections: 80
+  # display-data-service
+  - host: http://0.0.0.0:8083
+    sharedConnections: 10
+usersPerSec: 10
+duration: 5s
+scenario:
+  - test:
+      - httpRequest:
+          GET: /
+          handler:
+            status:
+              range: 2xx
+            onCompletion:
+              set: completed <- yes
+          sync: false
+      - awaitVar: completed
