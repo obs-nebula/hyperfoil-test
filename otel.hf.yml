@@ -1,0 +1,24 @@
+name: otel-disabled
+http:
+- host: http://localhost:8080
+  sharedConnections: 10
+- host: http://localhost:8083
+  sharedConnections: 10
+duration: 10s
+usersPerSec: 10
+scenario:
+  - randomData:
+      - httpRequest:
+          GET: /
+          authority: localhost:8080
+          handler:
+            status:
+              range: 2xx
+            onCompletion:
+              set: completed <- yes
+          sync: false
+      - awaitVar: completed
+  - displayData:
+      - httpRequest:
+          GET: /
+          authority: localhost:8083
