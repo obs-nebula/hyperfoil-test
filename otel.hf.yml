@@ -1,11 +1,11 @@
-name: otel-disabled
+name: otel-enabled
 http:
 - host: http://localhost:8080
-  sharedConnections: 10
+  sharedConnections: 80
 - host: http://localhost:8083
-  sharedConnections: 10
+  sharedConnections: 80
 duration: 10s
-usersPerSec: 10
+usersPerSec: 20
 scenario:
   - randomData:
       - httpRequest:

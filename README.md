@@ -25,14 +25,9 @@ Open a terminal and run:
 docker-compose up
 ```
 
-Open other terminal and run
-
-```console
-curl 0.0.0.0:8080
-```
-
-
 ## Benchmark with Hyperfoil and OTEL-js enabled
+
+Open other terminal and run:
 
 ```console
 ./get-hf.sh
@@ -43,55 +38,43 @@ cd hyperfoil-0.23
 ```console
 [hyperfoil]$ start-local
 Starting controller in default directory (/tmp/hyperfoil)
-Controller started, listening on 127.0.0.1:33741
+Controller started, listening on 127.0.0.1:44439
 Connecting to the controller...
-Connected to 127.0.0.1:33741!
-```
-
-```console
+Connected to 127.0.0.1:44439!
 [hyperfoil@in-vm]$ upload ../otel.hf.yml
-Loaded benchmark otel-disabled, uploading...
+Loaded benchmark otel-enabled, uploading...
 ... done.
-``` 
-
-```console
 [hyperfoil@in-vm]$ run
-Started run 0002
-Run 0002, benchmark otel-disabled
+Started run 0004
+Run 0004, benchmark otel-enabled
 Agents: in-vm[READY]
-Started: 2023/01/27 08:23:16.624
+Started: 2023/01/27 08:48:06.536
 NAME  STATUS   STARTED       REMAINING  COMPLETED  TOTAL DURATION  DESCRIPTION
-main  RUNNING  08:23:16.624    1884 ms                             10.00 users per second
-Agents: in-vm[READY]
-Started: 2023/01/27 08:23:16.624
-NAME  STATUS
-      STARTED
-      REMAINING
-Agents: in-vm[STOPPED]
-Started: 2023/01/27 08:23:16.624    Terminated: 2023/01/27 08:23:26.634
+main  RUNNING  08:48:06.536     913 ms                             20.00 users peAgents: in-vm[STOPPED]
+Started: 2023/01/27 08:48:06.536    Terminated: 2023/01/27 08:48:16.544
 NAME  STATUS
       STARTED
       REMAINING
       COMPLETED
       TOTAL DURATION
       DESCRIPTION
------------------------
+---------------------------
 main  TERMINATED
-      08:23:16.624
+      08:48:06.536
 
-      08:23:26.633
-      10009 ms (exceeded by 9 ms)
-      10.00 users per second
------------------------
+      08:48:16.543
+      10007 ms (exceeded by 7 ms)
+      20.00 users per second
+---------------------------
 [hyperfoil@in-vm]$ stats
-Total stats from run 0002
-PHASE  METRIC       THROUGHPUT  REQUESTS  MEAN      p50      p90       p99       p99.9     p99.99    TIMEOUTS  ERRORS  BLOCKED  2xx  3xx  4xx
-                    5xx         CACHE
+Total stats from run 0004
+PHASE  METRIC       THROUGHPUT   REQUESTS  MEAN     p50      p90       p99       p99.9     p99.99    TIMEOUTS  ERRORS  BLOCKED  2xx  3xx  4xx
+                    5xx          CACHE
 ----------------------------------------------------------------------------------------------------------------------------------------------
-main   displayData  8.99 req/s        90   1.98 ms  1.64 ms   3.16 ms   8.06 ms   8.06 ms   8.06 ms         0       0     0 ns   90    0    0
-                             0         0
+main   displayData  21.09 req/s       211  1.91 ms  1.45 ms   3.15 ms   8.91 ms  10.68 ms  10.68 ms         0       0     0 ns  211    0    0
+                              0         0
 ----------------------------------------------------------------------------------------------------------------------------------------------
-main   randomData   8.99 req/s        90  11.11 ms  9.96 ms  15.27 ms  94.37 ms  94.37 ms  94.37 ms         0       0     0 ns   90    0    0
-                             0         0
+main   randomData   21.09 req/s       211  9.15 ms  8.06 ms  13.76 ms  28.57 ms  94.37 ms  94.37 ms         0       0     0 ns  211    0    0
+                              0         0
 ----------------------------------------------------------------------------------------------------------------------------------------------
 ```
