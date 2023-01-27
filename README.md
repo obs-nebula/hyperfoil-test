@@ -45,27 +45,28 @@ cd hyperfoil-0.23
 ```console
 [hyperfoil]$ start-local
 Starting controller in default directory (/tmp/hyperfoil)
-Controller started, listening on 127.0.0.1:33741
+Controller started, listening on 127.0.0.1:45857
 Connecting to the controller...
-Connected to 127.0.0.1:33741!
-```
-
-```console
+Connected to 127.0.0.1:45857!
 [hyperfoil@in-vm]$ upload ../otel.hf.yml
 Loaded benchmark otel-disabled, uploading...
 ... done.
-``` 
-
-```console
+[hyperfoil@in-vm]$ run
+Started run 0003
+Run 0003, benchmark otel-disabled
+Agents: in-vm[STOPPED]
+Started: 2023/01/27 08:37:21.615    Terminated: 2023/01/27 08:37:31.623
+NAME  STATUS      STARTED       REMAINING  COMPLETED     TOTAL DURATION               DESCRIPTION
+main  TERMINATED  08:37:21.615             08:37:31.622  10007 ms (exceeded by 7 ms)  20.00 users per second
 [hyperfoil@in-vm]$ stats
-Total stats from run 0001
-PHASE  METRIC       THROUGHPUT  REQUESTS  MEAN     p50      p90      p99       p99.9     p99.99    TIMEOUTS  ERRORS  BLOCKED  2xx  3xx  4xx
-                    5xx         CACHE
+Total stats from run 0003
+PHASE  METRIC       THROUGHPUT   REQUESTS  MEAN     p50      p90       p99       p99.9     p99.99    TIMEOUTS  ERRORS  BLOCKED  2xx  3xx  4xx
+                    5xx          CACHE
 ----------------------------------------------------------------------------------------------------------------------------------------------
-main   displayData  9.40 req/s        94  2.33 ms  2.54 ms  3.65 ms   4.85 ms   4.85 ms   4.85 ms         0       0     0 ns   94    0    0
-                             0         0
+main   displayData  20.69 req/s       207  1.92 ms  1.60 ms   3.34 ms   4.65 ms   7.18 ms   7.18 ms         0       0     0 ns  207    0    0
+                              0         0
 ----------------------------------------------------------------------------------------------------------------------------------------------
-main   randomData   9.40 req/s        94  7.17 ms  7.60 ms  9.63 ms  12.58 ms  12.58 ms  12.58 ms         0       0     0 ns   94    0    0
-                             0         0
+main   randomData   20.69 req/s       207  7.88 ms  7.60 ms  11.01 ms  24.77 ms  72.88 ms  72.88 ms         0       0     0 ns  207    0    0
+                              0         0
 ----------------------------------------------------------------------------------------------------------------------------------------------
 ```
