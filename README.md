@@ -1,8 +1,6 @@
 # hyperfoil-test
 
 
-WIP
-
 ```
 random-data-service : rds
 data-changer-service: dcs
@@ -30,6 +28,8 @@ docker-compose up
 
 
 ## Benchmark with Hyperfoil
+
+> If you want to change the number of users or other settings, then change the `otel.hf.yml` file and run the tests.
 
 Open other terminal and run:
 
