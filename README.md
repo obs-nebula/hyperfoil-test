@@ -24,7 +24,7 @@ graph TD;
 
 ### Note: If you want to change the number of users or other settings, then change the `otel.hf.yml` file and run the tests.
 
-### Note: After finish this test, you can switch to the other branch `console_exporter` and run the tests again with OpenTelemetry enabled
+### Note: After finish this test, you can switch to the other branch `console_exporter` or `otelcol_exporter` and run the tests again with OpenTelemetry enabled
 
 Open a terminal and run:
 
