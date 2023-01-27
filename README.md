@@ -19,15 +19,15 @@ graph TD;
   dds--Was fooled by dfs-->void;
 ```
 
+## Benchmark with Hyperfoil and OTEL-js enabled
+
+### Note: If you want to change the number of users or other settings, then change the `otel.hf.yml` file and run the tests.
+
 Open a terminal and run:
 
 ```console
 docker-compose up
 ```
-
-## Benchmark with Hyperfoil and OTEL-js enabled
-
-> If you want to change the number of users or other settings, then change the `otel.hf.yml` file and run the tests.
 
 Open other terminal and run:
 
