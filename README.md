@@ -19,7 +19,7 @@ graph TD;
   dds--Was fooled by dfs-->void;
 ```
 
-## Benchmark with Hyperfoil and OTEL-js enabled
+## Benchmark with Hyperfoil and OTEL-js enabled exporting to OTELCOL
 
 ### Note: If you want to change the number of users or other settings, then change the `otel.hf.yml` file and run the tests.
 
@@ -40,43 +40,28 @@ cd hyperfoil-0.23
 ```console
 [hyperfoil]$ start-local
 Starting controller in default directory (/tmp/hyperfoil)
-Controller started, listening on 127.0.0.1:44439
+Controller started, listening on 127.0.0.1:36249
 Connecting to the controller...
-Connected to 127.0.0.1:44439!
+Connected to 127.0.0.1:36249!
 [hyperfoil@in-vm]$ upload ../otel.hf.yml
 Loaded benchmark otel-enabled, uploading...
 ... done.
 [hyperfoil@in-vm]$ run
-Started run 0004
-Run 0004, benchmark otel-enabled
-Agents: in-vm[READY]
-Started: 2023/01/27 08:48:06.536
-NAME  STATUS   STARTED       REMAINING  COMPLETED  TOTAL DURATION  DESCRIPTION
-main  RUNNING  08:48:06.536     913 ms                             20.00 users peAgents: in-vm[STOPPED]
-Started: 2023/01/27 08:48:06.536    Terminated: 2023/01/27 08:48:16.544
-NAME  STATUS
-      STARTED
-      REMAINING
-      COMPLETED
-      TOTAL DURATION
-      DESCRIPTION
----------------------------
-main  TERMINATED
-      08:48:06.536
-
-      08:48:16.543
-      10007 ms (exceeded by 7 ms)
-      20.00 users per second
----------------------------
+Started run 0006
+Run 0006, benchmark otel-enabled
+Agents: in-vm[STOPPED]
+Started: 2023/01/27 10:27:34.015    Terminated: 2023/01/27 10:27:44.026
+NAME  STATUS      STARTED       REMAINING  COMPLETED     TOTAL DURATION                DESCRIPTION
+main  TERMINATED  10:27:34.015             10:27:44.025  10010 ms (exceeded by 10 ms)  20.00 users per second
 [hyperfoil@in-vm]$ stats
-Total stats from run 0004
-PHASE  METRIC       THROUGHPUT   REQUESTS  MEAN     p50      p90       p99       p99.9     p99.99    TIMEOUTS  ERRORS  BLOCKED  2xx  3xx  4xx
-                    5xx          CACHE
+Total stats from run 0006
+PHASE  METRIC       THROUGHPUT   REQUESTS  MEAN      p50       p90       p99       p99.9      p99.99     TIMEOUTS  ERRORS  BLOCKED  2xx  3xx
+                    4xx          5xx       CACHE
 ----------------------------------------------------------------------------------------------------------------------------------------------
-main   displayData  21.09 req/s       211  1.91 ms  1.45 ms   3.15 ms   8.91 ms  10.68 ms  10.68 ms         0       0     0 ns  211    0    0
-                              0         0
+main   displayData  20.68 req/s       207   3.60 ms   3.11 ms   5.73 ms  13.43 ms   18.09 ms   18.09 ms         0       0     0 ns  207    0
+                              0         0         0
 ----------------------------------------------------------------------------------------------------------------------------------------------
-main   randomData   21.09 req/s       211  9.15 ms  8.06 ms  13.76 ms  28.57 ms  94.37 ms  94.37 ms         0       0     0 ns  211    0    0
-                              0         0
+main   randomData   20.68 req/s       207  13.75 ms  12.45 ms  20.84 ms  80.22 ms  116.92 ms  116.92 ms         0       0     0 ns  207    0
+                              0         0         0
 ----------------------------------------------------------------------------------------------------------------------------------------------
 ```
