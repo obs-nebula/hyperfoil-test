@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@hapi/hapi": "^21.2.1",
-    "pg": "^8.8.0",
+    "pg": "^8.9.0",
     "socket.io": "^4.5.4"
   }
 }
