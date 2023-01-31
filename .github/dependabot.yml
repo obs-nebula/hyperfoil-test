@@ -16,3 +16,43 @@ updates:
     directory: "/display-data-service"
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/random-data-service"
+    schedule:
+      interval: "daily"
+    target-branch: "console_exporter"
+  - package-ecosystem: "npm"
+    directory: "/data-changer-service"
+    schedule:
+      interval: "daily"
+    target-branch: "console_exporter"
+  - package-ecosystem: "npm"
+    directory: "/data-filter-service"
+    schedule:
+      interval: "daily"
+    target-branch: "console_exporter"   
+  - package-ecosystem: "npm"
+    directory: "/display-data-service"
+    schedule:
+      interval: "daily"
+    target-branch: "console_exporter"
+  - package-ecosystem: "npm"
+    directory: "/random-data-service"
+    schedule:
+      interval: "daily"
+    target-branch: "otelcol_exporter"
+  - package-ecosystem: "npm"
+    directory: "/data-changer-service"
+    schedule:
+      interval: "daily"
+    target-branch: "otelcol_exporter"
+  - package-ecosystem: "npm"
+    directory: "/data-filter-service"
+    schedule:
+      interval: "daily"
+    target-branch: "otelcol_exporter"   
+  - package-ecosystem: "npm"
+    directory: "/display-data-service"
+    schedule:
+      interval: "daily"
+    target-branch: "otelcol_exporter"
