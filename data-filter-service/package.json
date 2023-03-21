@@ -15,7 +15,7 @@
     "@opentelemetry/resources": "^1.9.1",
     "@opentelemetry/sdk-trace-base": "^1.9.1",
     "@opentelemetry/sdk-trace-node": "^1.9.1",
-    "@opentelemetry/semantic-conventions": "^1.9.1",
+    "@opentelemetry/semantic-conventions": "^1.10.1",
     "kafkajs": "^2.2.3",
     "pg": "^8.9.0",
     "socket.io": "^4.5.4",
