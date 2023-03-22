@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@opentelemetry/api": "^1.4.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.35.1",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.36.1",
     "@opentelemetry/instrumentation-fastify": "^0.31.1",
     "@opentelemetry/instrumentation-http": "^0.35.1",
     "@opentelemetry/resources": "^1.9.1",
