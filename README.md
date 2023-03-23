@@ -1,5 +1,22 @@
 # hyperfoil-test
 
+> OTEL-JS packages in use (both console_exporter branch + otelcol_exporter branch, the difference is `@opentelemetry/exporter-trace-otlp-http` only):
+
+| Package | Why |
+| ----------- | ----------- |
+| @opentelemetry/exporter-trace-otlp-http | To export to OTEL collector OTLP/HTTP |
+| @opentelemetry/resources | To be used with `semantic-conventions` to identify the application/service's name |
+| @opentelemetry/sdk-trace-node | For automatic instrumentation |
+| @opentelemetry/semantic-conventions | To be used with `resources` to identify the application/service's name |
+| @opentelemetry/instrumentation | To register the fetch auto-instrumentation plugin |
+| @opentelemetry/instrumentation-fetch | For fetch auto-instrumentation |
+| @opentelemetry/instrumentation-fastify | For fastify auto-instrumentation |
+| @opentelemetry/instrumentation-http | Required for `@opentelemetry/instrumentation-express`, `@opentelemetry/instrumentation-fastify`, `@opentelemetry/instrumentation-hapi` |
+| @opentelemetry/instrumentation-pg | For postgres auto-instrumentation |
+| @opentelemetry/instrumentation-hapi | For hapi auto-instrumentation |
+| @opentelemetry/instrumentation-socket.io | For socket.io auto-instrumentation |
+| @opentelemetry/instrumentation-express | For Express auto-instrumentation |
+
 
 ```
 random-data-service : rds
